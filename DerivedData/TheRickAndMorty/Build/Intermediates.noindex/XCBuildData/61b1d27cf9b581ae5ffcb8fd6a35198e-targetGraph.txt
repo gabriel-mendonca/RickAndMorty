@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+TheRickAndMorty in TheRickAndMorty
+TheRickAndMortyTests in TheRickAndMorty, depends on:
+TheRickAndMorty in TheRickAndMorty (explicit)
+TheRickAndMortyUITests in TheRickAndMorty, depends on:
+TheRickAndMorty in TheRickAndMorty (explicit)

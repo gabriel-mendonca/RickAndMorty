@@ -1,0 +1,64 @@
+{
+  "buildCommand" : "prepareForIndexing",
+  "configuredTargets" : [
+    {
+      "guid" : "178cda7ece61ee01af3959859197f99ee9de6724d6cc6f6fa0de45451ad4f210"
+    },
+    {
+      "guid" : "178cda7ece61ee01af3959859197f99e0a428d2dd5d203877e51bf1475c92862"
+    },
+    {
+      "guid" : "178cda7ece61ee01af3959859197f99e5462bf899cc06e8543faa82d60db4f4c"
+    }
+  ],
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64e",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : true,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos14.5",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "armv4t",
+        "armv5",
+        "armv6",
+        "armv7",
+        "armv7f",
+        "armv7s",
+        "armv7k",
+        "arm64",
+        "arm64e"
+      ],
+      "targetArchitecture" : "arm64e"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData/TheRickAndMorty/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData/TheRickAndMorty/Build/Products",
+      "derivedDataPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData/TheRickAndMorty/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData/TheRickAndMorty/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/gabrielmendonca/Documents/TheRickAndMorty/DerivedData/TheRickAndMorty/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
