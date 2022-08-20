@@ -7,34 +7,55 @@
 
 import UIKit
 
+protocol HomeViewModelDelegate: AnyObject {
+    func didSuccess(results: [Results])
+    func didError(error: Error)
+}
+
 class HomeViewModel {
     
+    weak var delegate: HomeViewModelDelegate?
+    private let manager = HomeServiceApi()
     var model: Character?
-    var statusObservable: Observable<RequestStates<Character>>
+    var results: [Results] = []
+    var hasResquestInProgress = false
+    var pages = 1
     
     init() {
-        self.statusObservable = Observable(RequestStates.loading)
+        
     }
     
-    func fillCharacters(page: Int) -> Int {
-        guard let result = model?.results.count else { return 0 }
-        for i in 0..<result {
-            guard let pages = model?.info.next else { return 0 }
-        }
-        return page
-    }
-    
-    func numberOfCharacters() -> Int {
-        model?.results.count ?? 0
-    }
-    
-    internal func fetchCharacters(env: API.Enviroment? = nil) {
-        API(withEnviroment: env).homeService.getCharactersList(page: 0) { [weak self] (response) in
+    internal func fetchCharacters() {
+        guard !hasResquestInProgress else { return }
+        hasResquestInProgress = true
+        manager.getCharacter(page: pages) { [weak self] (responses) in
             guard let self = self else { return }
-            self.model = response
-            self.statusObservable.value = .load(data: response)
-        } onFailure: { (error) in
-            self.statusObservable.value = .errored(error: error)
+            switch responses {
+            case .success(let data):
+                self.model = data
+                self.results.append(contentsOf: data.results ?? [])
+                self.delegate?.didSuccess(results: self.results)
+                self.pages += 1
+            case .failure(let error):
+                if let error = error {
+                print("get characters: \(error)")
+                }
+            }
         }
+        self.hasResquestInProgress = false
+    }
+    
+    internal func getMoreData() {
+        guard getNumberPage() >= self.pages else { return }
+        fetchCharacters()
+    }
+    
+    internal func getNumberPage() -> Int {
+        return model?.info.pages ?? 0
+    }
+    
+    func refreshPages() {
+        pages = 1
+        results.removeAll()
     }
 }

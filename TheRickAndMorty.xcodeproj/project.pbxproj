@@ -7,16 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABAA51AD28AC254800E752C0 /* URLParamaterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51A228AC254800E752C0 /* URLParamaterEncoder.swift */; };
+		ABAA51AE28AC254800E752C0 /* ParameterEnconding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51A328AC254800E752C0 /* ParameterEnconding.swift */; };
+		ABAA51B028AC254800E752C0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51A628AC254800E752C0 /* NetworkManager.swift */; };
+		ABAA51B128AC254800E752C0 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51A828AC254800E752C0 /* APIEndPoints.swift */; };
+		ABAA51B228AC254800E752C0 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51AA28AC254800E752C0 /* EndPointType.swift */; };
+		ABAA51B328AC254800E752C0 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51AB28AC254800E752C0 /* NetworkRouter.swift */; };
+		ABAA51B428AC254800E752C0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA51AC28AC254800E752C0 /* Router.swift */; };
+		ABADAF3428B04D6100561F6F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADAF3328B04D6100561F6F /* HTTPMethod.swift */; };
+		ABADAF3628B04D8D00561F6F /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADAF3528B04D8D00561F6F /* HTTPTask.swift */; };
 		DA6FB40E283E6044004539F1 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FB40D283E6044004539F1 /* UIView+AutoLayout.swift */; };
 		DA6FB411283E6151004539F1 /* TabBarIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FB410283E6151004539F1 /* TabBarIcons.swift */; };
 		DA6FB415283E68C1004539F1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FB414283E68C1004539F1 /* TabBarController.swift */; };
 		DA6FB417283EC40A004539F1 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FB416283EC40A004539F1 /* TabBarCoordinator.swift */; };
 		DA741704287B5D6F004D3AE4 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741703287B5D6F004D3AE4 /* HomeModel.swift */; };
 		DA741707287B6293004D3AE4 /* HomeServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741706287B6293004D3AE4 /* HomeServiceApi.swift */; };
-		DA741729287DC613004D3AE4 /* HeaderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741728287DC613004D3AE4 /* HeaderHandler.swift */; };
 		DA74172F287DC68C004D3AE4 /* DeviceTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74172C287DC68B004D3AE4 /* DeviceTarget.swift */; };
 		DA741730287DC68C004D3AE4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74172E287DC68B004D3AE4 /* Observable.swift */; };
-		DA741734287E0A96004D3AE4 /* RequestStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741733287E0A96004D3AE4 /* RequestStates.swift */; };
 		DAE268CA283CFBA400AC285A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE268C9283CFBA400AC285A /* AppDelegate.swift */; };
 		DAE268D4283CFBA400AC285A /* TheRickAndMorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAE268D2283CFBA400AC285A /* TheRickAndMorty.xcdatamodeld */; };
 		DAE268D6283CFBA700AC285A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAE268D5283CFBA700AC285A /* Assets.xcassets */; };
@@ -29,14 +36,8 @@
 		DAE26909283D05E600AC285A /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE26908283D05E600AC285A /* HomeCoordinator.swift */; };
 		DAE2690B283D0A0B00AC285A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2690A283D0A0B00AC285A /* HomeViewModel.swift */; };
 		DAE2690E283D0FA800AC285A /* ViewLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2690D283D0FA800AC285A /* ViewLayoutHelper.swift */; };
-		DAF2B5F3284019E100EE4D7D /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5F2284019E100EE4D7D /* Enviroment.swift */; };
-		DAF2B5F528401A4600EE4D7D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5F428401A4600EE4D7D /* API.swift */; };
-		DAF2B5F728401BDA00EE4D7D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5F628401BDA00EE4D7D /* Endpoint.swift */; };
-		DAF2B5F928401CB800EE4D7D /* Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5F828401CB800EE4D7D /* Requester.swift */; };
 		DAF2B5FD284020ED00EE4D7D /* RickAndMortyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5FC284020ED00EE4D7D /* RickAndMortyTableViewCell.swift */; };
 		DAF2B6002840217C00EE4D7D /* RickAndMortyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B5FF2840217C00EE4D7D /* RickAndMortyCard.swift */; };
-		DAF2B602284947EA00EE4D7D /* RequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B601284947EA00EE4D7D /* RequestExecutor.swift */; };
-		DAF2B6042849541200EE4D7D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2B6032849541200EE4D7D /* ErrorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,16 +58,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ABAA51A228AC254800E752C0 /* URLParamaterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParamaterEncoder.swift; sourceTree = "<group>"; };
+		ABAA51A328AC254800E752C0 /* ParameterEnconding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEnconding.swift; sourceTree = "<group>"; };
+		ABAA51A628AC254800E752C0 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		ABAA51A828AC254800E752C0 /* APIEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
+		ABAA51AA28AC254800E752C0 /* EndPointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		ABAA51AB28AC254800E752C0 /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		ABAA51AC28AC254800E752C0 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		ABADAF3328B04D6100561F6F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		ABADAF3528B04D8D00561F6F /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
 		DA6FB40D283E6044004539F1 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		DA6FB410283E6151004539F1 /* TabBarIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcons.swift; sourceTree = "<group>"; };
 		DA6FB414283E68C1004539F1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DA6FB416283EC40A004539F1 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		DA741703287B5D6F004D3AE4 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		DA741706287B6293004D3AE4 /* HomeServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceApi.swift; sourceTree = "<group>"; };
-		DA741728287DC613004D3AE4 /* HeaderHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHandler.swift; sourceTree = "<group>"; };
 		DA74172C287DC68B004D3AE4 /* DeviceTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTarget.swift; sourceTree = "<group>"; };
 		DA74172E287DC68B004D3AE4 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		DA741733287E0A96004D3AE4 /* RequestStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStates.swift; sourceTree = "<group>"; };
 		DAE268C6283CFBA400AC285A /* TheRickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheRickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE268C9283CFBA400AC285A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAE268D3283CFBA400AC285A /* TheRickAndMorty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheRickAndMorty.xcdatamodel; sourceTree = "<group>"; };
@@ -85,14 +93,8 @@
 		DAE26908283D05E600AC285A /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		DAE2690A283D0A0B00AC285A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DAE2690D283D0FA800AC285A /* ViewLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLayoutHelper.swift; sourceTree = "<group>"; };
-		DAF2B5F2284019E100EE4D7D /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
-		DAF2B5F428401A4600EE4D7D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		DAF2B5F628401BDA00EE4D7D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		DAF2B5F828401CB800EE4D7D /* Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requester.swift; sourceTree = "<group>"; };
 		DAF2B5FC284020ED00EE4D7D /* RickAndMortyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyTableViewCell.swift; sourceTree = "<group>"; };
 		DAF2B5FF2840217C00EE4D7D /* RickAndMortyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCard.swift; sourceTree = "<group>"; };
-		DAF2B601284947EA00EE4D7D /* RequestExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestExecutor.swift; sourceTree = "<group>"; };
-		DAF2B6032849541200EE4D7D /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABAA51A028AC254800E752C0 /* NetworkProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA51A128AC254800E752C0 /* Encoding */,
+				ABAA51A528AC254800E752C0 /* Manager */,
+				ABAA51A728AC254800E752C0 /* EndPoint */,
+				ABAA51A928AC254800E752C0 /* Service */,
+			);
+			name = NetworkProtocol;
+			path = ../../CamadaRedeOrientadoProtocolo/CamadaRedeOrientadoProtocolo/NetworkProtocol;
+			sourceTree = "<group>";
+		};
+		ABAA51A128AC254800E752C0 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA51A228AC254800E752C0 /* URLParamaterEncoder.swift */,
+				ABAA51A328AC254800E752C0 /* ParameterEnconding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		ABAA51A528AC254800E752C0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA51A628AC254800E752C0 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		ABAA51A728AC254800E752C0 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA51A828AC254800E752C0 /* APIEndPoints.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		ABAA51A928AC254800E752C0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ABAA51AA28AC254800E752C0 /* EndPointType.swift */,
+				ABADAF3328B04D6100561F6F /* HTTPMethod.swift */,
+				ABADAF3528B04D8D00561F6F /* HTTPTask.swift */,
+				ABAA51AB28AC254800E752C0 /* NetworkRouter.swift */,
+				ABAA51AC28AC254800E752C0 /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		DA6FB40F283E612F004539F1 /* DesingSysytem */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				DAE268C9283CFBA400AC285A /* AppDelegate.swift */,
+				ABAA51A028AC254800E752C0 /* NetworkProtocol */,
 				DA74172A287DC68B004D3AE4 /* General */,
-				DAF2B5F1284019CF00EE4D7D /* Network */,
 				DAE268FE283D012900AC285A /* Commons */,
 				DA6FB40F283E612F004539F1 /* DesingSysytem */,
 				DAE26903283D059100AC285A /* Home */,
@@ -297,21 +348,6 @@
 				DAE268FF283D014400AC285A /* BaseCoordinator.swift */,
 			);
 			path = BaseCoordinator;
-			sourceTree = "<group>";
-		};
-		DAF2B5F1284019CF00EE4D7D /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				DAF2B5F2284019E100EE4D7D /* Enviroment.swift */,
-				DAF2B5F428401A4600EE4D7D /* API.swift */,
-				DAF2B5F628401BDA00EE4D7D /* Endpoint.swift */,
-				DAF2B5F828401CB800EE4D7D /* Requester.swift */,
-				DA741728287DC613004D3AE4 /* HeaderHandler.swift */,
-				DAF2B601284947EA00EE4D7D /* RequestExecutor.swift */,
-				DA741733287E0A96004D3AE4 /* RequestStates.swift */,
-				DAF2B6032849541200EE4D7D /* ErrorHandler.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		DAF2B5FE2840216C00EE4D7D /* Components */ = {
@@ -456,27 +492,28 @@
 				DAF2B6002840217C00EE4D7D /* RickAndMortyCard.swift in Sources */,
 				DA6FB417283EC40A004539F1 /* TabBarCoordinator.swift in Sources */,
 				DA74172F287DC68C004D3AE4 /* DeviceTarget.swift in Sources */,
+				ABAA51AE28AC254800E752C0 /* ParameterEnconding.swift in Sources */,
 				DA6FB415283E68C1004539F1 /* TabBarController.swift in Sources */,
-				DAF2B5F728401BDA00EE4D7D /* Endpoint.swift in Sources */,
-				DA741734287E0A96004D3AE4 /* RequestStates.swift in Sources */,
+				ABAA51B128AC254800E752C0 /* APIEndPoints.swift in Sources */,
+				ABAA51B428AC254800E752C0 /* Router.swift in Sources */,
 				DAE268D4283CFBA400AC285A /* TheRickAndMorty.xcdatamodeld in Sources */,
+				ABADAF3628B04D8D00561F6F /* HTTPTask.swift in Sources */,
 				DAE2690E283D0FA800AC285A /* ViewLayoutHelper.swift in Sources */,
-				DAF2B5F528401A4600EE4D7D /* API.swift in Sources */,
+				ABAA51B028AC254800E752C0 /* NetworkManager.swift in Sources */,
 				DA741707287B6293004D3AE4 /* HomeServiceApi.swift in Sources */,
 				DA741730287DC68C004D3AE4 /* Observable.swift in Sources */,
 				DAE2690B283D0A0B00AC285A /* HomeViewModel.swift in Sources */,
 				DAE26902283D047F00AC285A /* AppCoordinator.swift in Sources */,
 				DAF2B5FD284020ED00EE4D7D /* RickAndMortyTableViewCell.swift in Sources */,
-				DAF2B5F928401CB800EE4D7D /* Requester.swift in Sources */,
 				DA6FB411283E6151004539F1 /* TabBarIcons.swift in Sources */,
+				ABADAF3428B04D6100561F6F /* HTTPMethod.swift in Sources */,
 				DAE268CA283CFBA400AC285A /* AppDelegate.swift in Sources */,
+				ABAA51B328AC254800E752C0 /* NetworkRouter.swift in Sources */,
 				DAE26900283D014400AC285A /* BaseCoordinator.swift in Sources */,
-				DA741729287DC613004D3AE4 /* HeaderHandler.swift in Sources */,
+				ABAA51B228AC254800E752C0 /* EndPointType.swift in Sources */,
 				DAE26909283D05E600AC285A /* HomeCoordinator.swift in Sources */,
 				DA741704287B5D6F004D3AE4 /* HomeModel.swift in Sources */,
-				DAF2B6042849541200EE4D7D /* ErrorHandler.swift in Sources */,
-				DAF2B602284947EA00EE4D7D /* RequestExecutor.swift in Sources */,
-				DAF2B5F3284019E100EE4D7D /* Enviroment.swift in Sources */,
+				ABAA51AD28AC254800E752C0 /* URLParamaterEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +682,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 944UGLCUDB;
+				DEVELOPMENT_TEAM = 5LYU3S5635;
 				INFOPLIST_FILE = TheRickAndMorty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -665,7 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 944UGLCUDB;
+				DEVELOPMENT_TEAM = 5LYU3S5635;
 				INFOPLIST_FILE = TheRickAndMorty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

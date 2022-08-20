@@ -7,17 +7,23 @@
 
 import Foundation
 
-class HomeServiceApi: Requester {
+class HomeServiceApi: NetworkManager {
     
-    func getCharactersList(page: Int,onSuccess: @escaping CompletionWithSuccess<Character>, onFailure: @escaping CompletionWithFailure) {
-        let header = HeaderHandler().generate(header: .basic)
-        let url = urlComposer(using: Endpoint.character, complement: "?page=\(page)")
-        let request = requestComposer(using: url, headers: header)
-        dataTask(using: request) { (info: Character, response) in
-            onSuccess(info)
-        } failure: { (error) in
-            onFailure(error)
-        }
-        
-    }
+    func getCharacter(page: Int,completion: @escaping (_ results: Result) -> Void) {
+           router.request(.character(page: page)) { (data, _, error) in
+               if error != nil {
+                   completion(.failure(error: "Please check your network connection"))
+               }
+               
+               if let data = data {
+                   do {
+                       let character = try JSONDecoder().decode(Character.self, from: data)
+                       completion(.success(data: character))
+                   } catch {
+                       completion(.failure(error: NetworkResponse.unableToDecode.rawValue))
+                   }
+                   
+               }
+           }
+       }
 }

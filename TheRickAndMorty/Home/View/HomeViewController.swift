@@ -10,21 +10,18 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel!
+    var result: [Results] = []
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = " home"
-        view.backgroundColor = .red
         setupView()
-        requestListener()
-        viewModel.fetchCharacters()
-        tableView.reloadData()
     }
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
+        viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +30,7 @@ final class HomeViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let table = UITableView()
-        table.backgroundColor = .blue
+        table.backgroundColor = .white
         table.dataSource = self
         table.delegate = self
         table.register(RickAndMortyTableViewCell.self, forCellReuseIdentifier: RickAndMortyTableViewCell.reuseIdentifier)
@@ -41,43 +38,42 @@ final class HomeViewController: UIViewController {
         return table
     }()
     
-    func requestListener() {
-        viewModel.statusObservable.didChange = { [weak self] response in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.config(state: response)
-            }
-        }
+    func setupRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: "puxe para atualizar")
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
-    func config(state: RequestStates<Character>) {
-        switch state {
-        case .loading:
-            print("loading...")
-        case .load(data: let characters):
-            self.viewModel.model = characters
-            self.tableView.reloadData()
-        default:
-            break
-        }
+    @objc
+    private func refresh(_ sender: AnyObject) {
+        viewModel.refreshPages()
+        viewModel.fetchCharacters()
     }
-    
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 375
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let totalItems = viewModel.results.count
+        if indexPath.row > totalItems - 3 {
+            viewModel.getMoreData()
+        } else if totalItems == viewModel.model?.info.count {
+            
+        }
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCharacters()
+        return result.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RickAndMortyTableViewCell.reuseIdentifier, for: indexPath) as? RickAndMortyTableViewCell else { return UITableViewCell() }
-        guard let character = viewModel.model?.results[indexPath.row] else { return UITableViewCell()}
+        let character = result[indexPath.row]
         cell.setupView()
         cell.setupCell(model: character)
         return cell
@@ -97,8 +93,26 @@ extension HomeViewController: ViewLayoutHelper {
     }
     
     func setupAdditionalConfiguration() {
+        title = " home"
+        view.backgroundColor = .white
         
+        viewModel.fetchCharacters()
+        setupRefreshControl()
     }
     
     
+}
+
+extension HomeViewController: HomeViewModelDelegate {
+    func didError(error: Error) {
+        
+    }
+    
+    func didSuccess(results: [Results]) {
+        self.result = results
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
+    }
 }

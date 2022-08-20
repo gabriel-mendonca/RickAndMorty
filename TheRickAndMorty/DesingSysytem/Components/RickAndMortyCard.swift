@@ -27,13 +27,14 @@ class RickAndMortyCard: UIView {
     
     private lazy var charactersImage: UIImageView = {
         let characters = UIImageView()
-        characters.contentMode = .scaleAspectFill
+        characters.contentMode = .scaleToFill
         characters.translatesAutoresizingMaskIntoConstraints = false
         return characters
     }()
     
     private lazy var charactersName: UILabel = {
         let name = UILabel()
+        name.font = .boldSystemFont(ofSize: 17)
         return name
     }()
     
@@ -83,36 +84,37 @@ extension RickAndMortyCard {
         charactersImage.anchor(
             top: viewCard.topAnchor,
             left: viewCard.leftAnchor,
+            bottom: viewCard.bottomAnchor,
             right: viewCard.rightAnchor,
-            heightConstant: 50)
+            heightConstant: self.bounds.height)
     }
     
     private func setupConstraintsCharacterName() {
         charactersName.anchor(
-            top: charactersImage.bottomAnchor,
             left: viewCard.leftAnchor,
+            bottom: charactersStatus.topAnchor,
             right: viewCard.rightAnchor,
-            topConstant: 15,
-            leftConstant: 16)
+            leftConstant: 16,
+            bottomConstant: 10)
     }
     
     private func setupConstraintsCharacterStatus() {
         charactersStatus.anchor(
-            top: charactersName.bottomAnchor,
             left: viewCard.leftAnchor,
+            bottom: characterSpecies.topAnchor,
             right: viewCard.rightAnchor,
-            topConstant: 15,
             leftConstant: 16,
+            bottomConstant: 10,
             rightConstant: 16)
     }
     
     private func setupConstraintsCharacterSpecies() {
         characterSpecies.anchor(
-            top: charactersStatus.bottomAnchor,
             left: viewCard.leftAnchor,
+            bottom: viewCard.bottomAnchor,
             right: viewCard.rightAnchor,
-            topConstant: 15,
             leftConstant: 16,
+            bottomConstant: 10,
             rightConstant: 16)
     }
     

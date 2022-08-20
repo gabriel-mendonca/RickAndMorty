@@ -13,10 +13,10 @@ final class RickAndMortyTableViewCell: UITableViewCell {
     lazy var card = RickAndMortyCard()
     
     internal func setupCell(model: Results) {
-        self.card.setupCard(image: model.image,
-                            name: model.name,
-                            status: model.status.rawValue ,
-                            species: model.species.rawValue)
+        self.card.setupCard(image: model.image ?? "",
+                            name: model.name?.uppercased() ?? "",
+                            status: model.status?.rawValue ?? "" ,
+                            species: model.species?.rawValue ?? "")
         }
 }
 

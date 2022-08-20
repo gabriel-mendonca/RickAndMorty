@@ -8,26 +8,26 @@
 // MARK: - Character
 struct Character: Codable {
     let info: Info
-    let results: [Results]
-}
-
-// MARK: - Info
-struct Info: Codable {
-    let count, pages: Int
-    let next: String
-    let prev: String?
+    var results: [Results]?
+    
+    // MARK: - Info
+    struct Info: Codable {
+        let count, pages: Int
+        let next: String?
+        let prev: String?
+    }
 }
 
 // MARK: - Result
 struct Results: Codable {
     let id: Int?
-    let name: String
-    let status: Status
-    let species: Species
+    let name: String?
+    let status: Status?
+    let species: Species?
     let type: String?
     let gender: Gender?
     let origin, location: Location?
-    let image: String
+    let image: String?
     let episode: [String]?
     let url: String?
     let created: String?
@@ -36,6 +36,7 @@ struct Results: Codable {
 enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
+    case genderless = "Genderless"
     case unknown = "unknown"
 }
 
@@ -48,6 +49,14 @@ struct Location: Codable {
 enum Species: String, Codable {
     case alien = "Alien"
     case human = "Human"
+    case animal = "Animal"
+    case robot = "Robot"
+    case humanoid = "Humanoid"
+    case disease = "Disease"
+    case cronenberg = "Cronenberg"
+    case poopybutthole = "Poopybutthole"
+    case mythologicalCreature = "Mythological Creature"
+    case unknown
 }
 
 enum Status: String, Codable {
