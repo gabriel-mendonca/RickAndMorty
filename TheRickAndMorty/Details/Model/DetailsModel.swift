@@ -11,7 +11,7 @@ struct DetailsModel: Codable {
     let id: Int?
     let name: String?
     let status: Status?
-    let species: Species?
+    let species: SpeciesDetail?
     let type: String?
     let gender: Gender?
     let origin, location: Location?

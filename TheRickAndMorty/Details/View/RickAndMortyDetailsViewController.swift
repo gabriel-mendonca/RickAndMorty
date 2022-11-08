@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 enum characters: String {
-    case alien = "👽"
-    case human = "👶🏻"
-    case animal = "😼"
-    case robot = "🤖"
-    case humanoid = "👾"
-    case disease = "🦠"
-    case cronenberg = "❓"
-    case poopybutthole = "❗️"
-    case mythologicalCreature = "🐉"
+    case alien
+    case human
+    case animal
+    case robot
+    case humanoid
+    case disease
+    case cronenberg
+    case poopybutthole
+    case mythologicalCreature
     case unknown
 }
 
@@ -39,7 +39,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var titlePerson: UILabel = {
         let title = UILabel()
-        title.textColor = .white
+        title.textColor = .black
         title.font = UIFont.boldSystemFont(ofSize: 19)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -47,7 +47,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var speciesPerson: UILabel = {
         let species = UILabel()
-        species.textColor = .white
+        species.textColor = .black
         species.font = UIFont.boldSystemFont(ofSize: 19)
         species.translatesAutoresizingMaskIntoConstraints = false
         return species
@@ -55,7 +55,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var statusPerson: UILabel = {
         let status = UILabel()
-        status.textColor = .white
+        status.textColor = .black
         status.font = UIFont.boldSystemFont(ofSize: 19)
         status.translatesAutoresizingMaskIntoConstraints = false
             return status
@@ -69,7 +69,7 @@ class RickAndMortyDetailsViewController: UIViewController {
         
     private lazy var genderPerson: UILabel = {
         let gender = UILabel()
-        gender.textColor = .white
+        gender.textColor = .black
         gender.font = UIFont.boldSystemFont(ofSize: 19)
         gender.translatesAutoresizingMaskIntoConstraints = false
         return gender
@@ -90,38 +90,44 @@ class RickAndMortyDetailsViewController: UIViewController {
         setupView()
     }
     
-//    func emotions(cases: characters) {
-//        switch cases {
-//        case .alien:
-//            return
-//        case .human:
-//            <#code#>
-//        case .animal:
-//            <#code#>
-//        case .robot:
-//            <#code#>
-//        case .humanoid:
-//            <#code#>
-//        case .disease:
-//            <#code#>
-//        case .cronenberg:
-//            <#code#>
-//        case .poopybutthole:
-//            <#code#>
-//        case .mythologicalCreature:
-//            <#code#>
-//        case .unknown:
-//            <#code#>
-//        }
-//    }
-//
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchDetails()
+    }
+    
+    func emotions(cases: DetailsModel) -> String {
+        switch cases.species {
+        case .alien:
+            return "👽"
+        case .human:
+            return "👶🏻"
+        case .animal:
+            return "😼"
+        case .robot:
+            return "🤖"
+        case .humanoid:
+            return "👾"
+        case .disease:
+            return "🦠"
+        case .cronenberg:
+            return "❓"
+        case .poopybutthole:
+            return "❗️"
+        case .mythologicalCreature:
+            return "🐉"
+        case .unknown:
+            return ""
+        case .none:
+            return ""
+        }
+    }
+
     func populateData(data: DetailsModel) {
-//        let charactersEmoji = Characters.rawValue
         DispatchQueue.main.async {
             self.title = data.name
             self.setupImageView(model: data)
             self.titlePerson.text = "Nome: \(data.name ?? "none")"
-            self.speciesPerson.text = "Especie: \(data.species?.rawValue ?? "none")"
+            self.speciesPerson.text = "Especie: \(data.species?.rawValue ?? "none") \(self.emotions(cases: data))"
             self.statusPerson.text = "Status: \(data.status?.rawValue ?? "none")"
             self.genderPerson.text = "Genero: \(data.gender?.rawValue ?? "none")"
         }
@@ -214,8 +220,7 @@ extension RickAndMortyDetailsViewController: ViewLayoutHelper {
     func setupAdditionalConfiguration() {
         
         viewModel.delegate = self
-        viewModel.fetchDetails()
-        view.backgroundColor = .red
+        view.backgroundColor = .green
     }
 }
 extension RickAndMortyDetailsViewController: RickAndMortyDetailsViewModelDelegate {
