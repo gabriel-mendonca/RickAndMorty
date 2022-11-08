@@ -7,14 +7,10 @@
 
 import UIKit
 
-protocol HomeViewModelDelegate: AnyObject {
-    func didSuccess(results: [Results])
-    func didError(error: Error)
-}
-
 class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
+    weak var coordinatorDelegate: HomeViewModelCoordinatorDelegate?
     private let manager = HomeServiceApi()
     var model: Character?
     var results: [Results] = []
@@ -45,6 +41,10 @@ class HomeViewModel {
         self.hasResquestInProgress = false
     }
     
+    func goToDetails(id: Int) {
+        coordinatorDelegate?.sendToDetail(id: id)
+    }
+    
     internal func getMoreData() {
         guard getNumberPage() >= self.pages else { return }
         fetchCharacters()
@@ -58,4 +58,12 @@ class HomeViewModel {
         pages = 1
         results.removeAll()
     }
+}
+
+extension HomeViewModel: HomeViewModelCoordinatorDelegate {
+    func sendToDetail(id: Int) {
+        goToDetails(id: id)
+    }
+    
+    
 }

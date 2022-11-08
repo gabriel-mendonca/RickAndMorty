@@ -119,15 +119,7 @@ extension RickAndMortyCard {
     }
     
     internal func setupImageView(urlImage: String) {
-        if let urlPhoto = URL(string: urlImage) {
-            URLSession.shared.dataTask(with: urlPhoto) { data, response, error in
-                DispatchQueue.main.async {
-                    guard let data = data else { return }
-                    let image = UIImage(data: data)
-                    self.charactersImage.image = image
-                }
-            }.resume()
-        }
+        charactersImage.renderImageView(urlImage: urlImage)
         
     }
 }

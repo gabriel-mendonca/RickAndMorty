@@ -11,7 +11,9 @@ final class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel!
     var result: [Results] = []
-    private let refreshControl = UIRefreshControl()
+    private var loadingName: String!
+    private var loadingAnimation: LoadingAnimation!
+    private var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,11 @@ final class HomeViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
+        refreshControl = UIRefreshControl()
+        loadingName = "LoadingScience"
+        loadingAnimation = LoadingAnimation(nameJson: loadingName,
+                                            animationHeight: 80,
+                                            animationWidht: view.bounds.width)
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +56,17 @@ final class HomeViewController: UIViewController {
         viewModel.refreshPages()
         viewModel.fetchCharacters()
     }
+    
+    private func configFooterView(_ tableView: UITableView) {
+        tableView.tableFooterView?.frame = CGRect(
+            x: 0,
+            y: 30,
+            width: tableView.bounds.width,
+            height: 70
+        )
+        tableView.tableFooterView = loadingAnimation
+        tableView.tableFooterView?.backgroundColor = .black
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -58,9 +76,13 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let totalItems = viewModel.results.count
-        if indexPath.row > totalItems - 3 {
+        if indexPath.row > totalItems - 2 {
+            configFooterView(tableView)
+            loadingAnimation.startProgressLoading()
             viewModel.getMoreData()
-        } else if totalItems == viewModel.model?.info.count {
+            tableView.reloadData()
+            loadingAnimation.endProgressLoading()
+            tableView.tableFooterView?.isHidden = true
             
         }
     }
@@ -77,6 +99,11 @@ extension HomeViewController: UITableViewDataSource {
         cell.setupView()
         cell.setupCell(model: character)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let id = result[indexPath.row].id else { return }
+        viewModel.goToDetails(id: id)
     }
 }
 
@@ -104,8 +131,9 @@ extension HomeViewController: ViewLayoutHelper {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    
     func didError(error: Error) {
-        
+        loadingAnimation.endProgressLoading()
     }
     
     func didSuccess(results: [Results]) {

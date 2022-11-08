@@ -7,7 +7,44 @@
 
 import Foundation
 
+enum Result {
+    case success(data: Character)
+    case failure(error: String?)
+}
+
+enum APIHomeEndPoints {
+    case character(page: Int)
+}
+
+extension APIHomeEndPoints: EndPointType {
+    var baseURL: URL {
+        let url = BaseURL().baseURL
+        return URL(string: url)!
+    }
+    
+    var path: String {
+            return "character/"
+    }
+    
+    var httpMethod: HTTPMethod {
+        return .get
+    }
+    
+    var task: HTTPTask<Int>? {
+        switch self {
+        case .character(let page):
+            return .requestParameters(urlParameters: ["page":"\(page)"])
+        }
+    }
+    
+    var headers: HTTPHeaders? {
+        return nil
+    }
+}
+
 class HomeServiceApi: NetworkManager {
+    
+    internal let router = Router<APIHomeEndPoints>()
     
     func getCharacter(page: Int,completion: @escaping (_ results: Result) -> Void) {
            router.request(.character(page: page)) { (data, _, error) in

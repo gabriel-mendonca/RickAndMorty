@@ -14,8 +14,11 @@ class HomeCoordinator: BaseCoordinator {
     
     var homeViewModel: HomeViewModel
     
+    private var rickAndMortyDetailCoordinator: RickAndMortyDetailsCoordinator!
+    
     init() {
         homeViewModel = HomeViewModel()
+        homeViewModel.coordinatorDelegate = self
         view = HomeViewController(viewModel: homeViewModel)
         
     }
@@ -25,4 +28,18 @@ class HomeCoordinator: BaseCoordinator {
         navigation = nil
         presentationType = nil
     }
+    
+    func goRickAndMortyDetails(id: Int) {
+        guard let navigation = navigation else { return }
+        rickAndMortyDetailCoordinator = RickAndMortyDetailsCoordinator(id: id)
+        rickAndMortyDetailCoordinator.start(usingPresentation: .push(navigationController: navigation), animated: true)
+    }
+}
+
+extension HomeCoordinator: HomeViewModelCoordinatorDelegate {
+    func sendToDetail(id: Int) {
+        goRickAndMortyDetails(id: id)
+    }
+    
+    
 }
