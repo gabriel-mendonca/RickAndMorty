@@ -9,7 +9,7 @@ import UIKit
 
 class HomeCoordinator: BaseCoordinator {
     var view: HomeViewController?
-    var navigation: UINavigationController?
+    var navigation: NavigationController?
     var presentationType: PresentationType?
     
     var homeViewModel: HomeViewModel

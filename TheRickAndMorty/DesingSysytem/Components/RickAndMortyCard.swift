@@ -25,6 +25,13 @@ class RickAndMortyCard: UIView {
         return view
     }()
     
+    private lazy var overlayImage: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.2
+        return view
+    }()
+    
     private lazy var charactersImage: UIImageView = {
         let characters = UIImageView()
         characters.contentMode = .scaleToFill
@@ -34,18 +41,21 @@ class RickAndMortyCard: UIView {
     
     private lazy var charactersName: UILabel = {
         let name = UILabel()
+        name.textColor = .white
         name.font = .boldSystemFont(ofSize: 17)
         return name
     }()
     
     private lazy var charactersStatus: UILabel = {
         let status = UILabel()
+        status.textColor = .white
         status.translatesAutoresizingMaskIntoConstraints = false
         return status
     }()
     
     private lazy var characterSpecies: UILabel = {
         let species = UILabel()
+        species.textColor = .white
         species.translatesAutoresizingMaskIntoConstraints = false
         return species
     }()
@@ -89,6 +99,13 @@ extension RickAndMortyCard {
             heightConstant: self.bounds.height)
     }
     
+    private func setupConstraintsOverlayImage() {
+        overlayImage.anchor(top: charactersImage.topAnchor,
+                            left: charactersImage.leftAnchor,
+                            bottom: charactersImage.bottomAnchor,
+                            right: charactersImage.rightAnchor)
+    }
+    
     private func setupConstraintsCharacterName() {
         charactersName.anchor(
             left: viewCard.leftAnchor,
@@ -128,6 +145,7 @@ extension RickAndMortyCard: ViewLayoutHelper {
     func buildViewHierarchy() {
         addSubview(viewCard)
         viewCard.addSubview(charactersImage)
+        charactersImage.addSubview(overlayImage)
         viewCard.addSubview(charactersName)
         viewCard.addSubview(charactersStatus)
         viewCard.addSubview(characterSpecies)
@@ -136,6 +154,7 @@ extension RickAndMortyCard: ViewLayoutHelper {
     func setupContraints() {
         setupContrantsViewCard()
         setupConstraintsCharactersImage()
+        setupConstraintsOverlayImage()
         setupConstraintsCharacterName()
         setupConstraintsCharacterStatus()
         setupConstraintsCharacterSpecies()

@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingAnimation: UIView{
     
-    private var animationLoadingView: AnimationView?
+    private var animationLoadingView: LottieAnimationView?
     private var nameJson: String
     private var animationSpeed: CGFloat
     private var contentModeAnimation: UIView.ContentMode
@@ -36,7 +36,7 @@ class LoadingAnimation: UIView{
     }
     
     private func configureLoading() {
-        animationLoadingView = AnimationView(name: nameJson)
+        animationLoadingView = LottieAnimationView(name: nameJson)
         animationLoadingView?.frame = CGRect(x: 0, y: 0, width: animationWidht, height: animationHeight)
         animationLoadingView?.animationSpeed = animationSpeed
         animationLoadingView?.contentMode = contentModeAnimation

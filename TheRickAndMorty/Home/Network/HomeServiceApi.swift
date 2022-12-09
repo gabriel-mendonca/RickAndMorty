@@ -14,6 +14,7 @@ enum Result {
 
 enum APIHomeEndPoints {
     case character(page: Int)
+    case searchCharacters(name: String)
 }
 
 extension APIHomeEndPoints: EndPointType {
@@ -34,6 +35,8 @@ extension APIHomeEndPoints: EndPointType {
         switch self {
         case .character(let page):
             return .requestParameters(urlParameters: ["page":"\(page)"])
+        case .searchCharacters(let name):
+            return .requestParameters(urlParameters: ["name":"\(name)"])
         }
     }
     
@@ -63,4 +66,22 @@ class HomeServiceApi: NetworkManager {
                }
            }
        }
+    
+    func getFilterCharacters(name: String, completion: @escaping (_ results: Result) -> Void) {
+        router.request(.searchCharacters(name: name)) { (data, _, error) in
+            if error != nil {
+                completion(.failure(error: "Please check your network connection"))
+            }
+            
+            if let data = data {
+                do {
+                    let character = try JSONDecoder().decode(Character.self, from: data)
+                    completion(.success(data: character))
+                } catch {
+                    completion(.failure(error: NetworkResponse.unableToDecode.rawValue))
+                }
+                
+            }
+        }
+    }
 }

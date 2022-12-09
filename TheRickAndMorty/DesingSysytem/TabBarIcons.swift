@@ -9,6 +9,6 @@ import UIKit
 
 extension UIImage {
     
-    static var iconHome = UIImage(systemName: "")
-    static var iconHomeSelected = UIImage(systemName: "")
+    static var iconHome = UIImage(systemName: "house")
+    static var iconHomeSelected = UIImage(systemName: "house.fill")
 }

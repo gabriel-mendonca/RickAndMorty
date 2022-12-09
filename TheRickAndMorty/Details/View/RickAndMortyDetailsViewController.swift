@@ -39,7 +39,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var titlePerson: UILabel = {
         let title = UILabel()
-        title.textColor = .black
+        title.textColor = .white
         title.font = UIFont.boldSystemFont(ofSize: 19)
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -47,7 +47,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var speciesPerson: UILabel = {
         let species = UILabel()
-        species.textColor = .black
+        species.textColor = .white
         species.font = UIFont.boldSystemFont(ofSize: 19)
         species.translatesAutoresizingMaskIntoConstraints = false
         return species
@@ -55,7 +55,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     
     private lazy var statusPerson: UILabel = {
         let status = UILabel()
-        status.textColor = .black
+        status.textColor = .white
         status.font = UIFont.boldSystemFont(ofSize: 19)
         status.translatesAutoresizingMaskIntoConstraints = false
             return status
@@ -69,7 +69,7 @@ class RickAndMortyDetailsViewController: UIViewController {
         
     private lazy var genderPerson: UILabel = {
         let gender = UILabel()
-        gender.textColor = .black
+        gender.textColor = .white
         gender.font = UIFont.boldSystemFont(ofSize: 19)
         gender.translatesAutoresizingMaskIntoConstraints = false
         return gender
@@ -78,6 +78,7 @@ class RickAndMortyDetailsViewController: UIViewController {
     init(viewModel: RickAndMortyDetailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        hideBottomTabBar(true)
     }
     
     required init?(coder: NSCoder) {
@@ -220,7 +221,7 @@ extension RickAndMortyDetailsViewController: ViewLayoutHelper {
     func setupAdditionalConfiguration() {
         
         viewModel.delegate = self
-        view.backgroundColor = .green
+        view.backgroundColor = .black
     }
 }
 extension RickAndMortyDetailsViewController: RickAndMortyDetailsViewModelDelegate {

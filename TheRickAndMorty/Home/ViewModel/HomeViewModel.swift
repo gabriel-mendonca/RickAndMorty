@@ -41,6 +41,22 @@ class HomeViewModel {
         self.hasResquestInProgress = false
     }
     
+    internal func fetchSearchCharacters() {
+        manager.getFilterCharacters(name: "rick") { [weak self] results in
+            guard let self = self else { return }
+            switch results {
+            case .success(let data):
+                self.model = data
+                self.results.append(contentsOf: data.results ?? [])
+                self.delegate?.didSuccess(results: self.results)
+            case .failure(let error):
+                if let error = error {
+                print("characters: \(error)")
+                }
+            }
+        }
+    }
+    
     func goToDetails(id: Int) {
         coordinatorDelegate?.sendToDetail(id: id)
     }

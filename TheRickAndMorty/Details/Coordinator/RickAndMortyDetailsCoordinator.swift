@@ -12,7 +12,7 @@ import UIKit
 class RickAndMortyDetailsCoordinator: BaseCoordinator {
     
     var view: RickAndMortyDetailsViewController?
-    var navigation: UINavigationController?
+    var navigation: NavigationController?
     var presentationType: PresentationType?
     
     private var viewModel: RickAndMortyDetailsViewModel!

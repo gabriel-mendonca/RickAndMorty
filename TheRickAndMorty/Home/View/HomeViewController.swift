@@ -26,7 +26,7 @@ final class HomeViewController: UIViewController {
         viewModel.delegate = self
         refreshControl = UIRefreshControl()
         loadingName = "LoadingScience"
-        loadingAnimation = LoadingAnimation(nameJson: loadingName,
+        loadingAnimation = LoadingAnimation(nameJson: loadingName, animationSpeed: 1.5,
                                             animationHeight: 80,
                                             animationWidht: view.bounds.width)
     }
@@ -37,7 +37,7 @@ final class HomeViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let table = UITableView()
-        table.backgroundColor = .white
+        table.backgroundColor = .black
         table.dataSource = self
         table.delegate = self
         table.register(RickAndMortyTableViewCell.self, forCellReuseIdentifier: RickAndMortyTableViewCell.reuseIdentifier)
@@ -46,8 +46,10 @@ final class HomeViewController: UIViewController {
     }()
     
     func setupRefreshControl() {
-        refreshControl.attributedTitle = NSAttributedString(string: "puxe para atualizar")
+        let colorText = [NSAttributedString.Key.foregroundColor: UIColor.green]
+        refreshControl.attributedTitle = NSAttributedString(string: "puxe para atualizar", attributes: colorText)
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = .green
         tableView.addSubview(refreshControl)
     }
     
@@ -55,6 +57,7 @@ final class HomeViewController: UIViewController {
     private func refresh(_ sender: AnyObject) {
         viewModel.refreshPages()
         viewModel.fetchCharacters()
+        viewModel.fetchSearchCharacters()
     }
     
     private func configFooterView(_ tableView: UITableView) {
@@ -80,9 +83,7 @@ extension HomeViewController: UITableViewDelegate {
             configFooterView(tableView)
             loadingAnimation.startProgressLoading()
             viewModel.getMoreData()
-            tableView.reloadData()
             loadingAnimation.endProgressLoading()
-            tableView.tableFooterView?.isHidden = true
             
         }
     }
@@ -121,7 +122,7 @@ extension HomeViewController: ViewLayoutHelper {
     
     func setupAdditionalConfiguration() {
         title = " home"
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         
         viewModel.fetchCharacters()
         setupRefreshControl()
